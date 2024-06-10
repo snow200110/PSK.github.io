@@ -1,0 +1,24 @@
+.title-intro{
+    color: #03506F;
+    font-size: 30px;
+    font-weight: 800;
+    margin:10px;
+    text-align: center;
+}
+.little-topic{
+    text-align: center;
+}
+.list-1{
+    font-size: x-large;
+    margin-right:1250px;
+    background-color: #03506F;
+    border-radius: 20px;
+}
+.content{
+    text-align: left;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    color:#03506F;
+}

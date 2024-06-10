@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>INTRODUCTION</title>
+        <link rel="stylesheet" href="PskStyle.css">
+        <link rel="stylesheet" href="IntroStyle.css">
+        <link rel="stylesheet" href="normalize.css">
+    </head>
+    <body>
+        <header>
+            <div class="header-content wrapper-content">
+                <h1 class="topic">Xilinx Vivado 實現數位 PSK 調變系統設計</h1>
+                <nav class="header-nav">
+                    <a class="pagination" href="PSK.html" >HOME</a>
+                    <a class="pagination" href="Introduction.html">INTRODUCTION</a>
+                    <a class="pagination" href="process.html" >PSK</a>
+                    <a class="pagination" href="Result.html" >RESULT</a>
+                </nav>
+            </div>
+            <br/>
+            <br/>
+        </header>
+        <p class="title-intro">Introduction</p>
+        <ul class="little-topic">
+            <p class="list-1">PSK</p>
+            <p class="content">
+                PSK全名為phase shifting keying, 其是一種數字調變技術，用於將數字數據轉換為可以通過模擬信道傳輸的形式。
+                PSK通過改變載波信號的相位來表示數字信息。
+                這種調變方法在現代通信系統中非常常見，特別是在無線通信和衛星通信中。
+                <br/>
+                PSK主要有以下分類:
+                <ol class="content">
+                    <li>BPSK</li>
+                    <p>使用兩個相位（通常相差180度）來表示數字0和1。簡單且抗噪能力較強，適合在噪聲較大的環境中使用。</p>
+                    <li>QPSK</li>
+                    <p>使用四個相位（通常相差90度）來表示兩個比特的數據（00, 01, 10, 11）。
+                        比 BPSK 更有效率，可以在相同帶寬下傳輸更多數據。
+                    </p>
+                    <li>8-PSK</li>
+                    <p>使用八個相位來表示三個比特的數據。傳輸效率更高，但抗噪能力較弱。</p>
+                    <li>16-PSK及更高階</li>
+                    <p>使用16個或更多相位來表示更多比特的數據。提高了數據速率，但需要更高的信噪比。</p>
+                </ol>
+            </p>
+            <p class="list-1">Xilinx Vivado</p>
+            <p class="content">
+                Xilinx Vivado 是 Xilinx 公司推出的一款專業的電子設計自動化 (EDA) 軟體工具，
+                主要用於數位邏輯電路的設計和驗證，
+                特別是針對 FPGA 和 SoC 所設計。
+                其中包括：設計輸入、綜合、佈局布線、驗證/模擬工具。
+            </p>
+
+        </ul>
+
+        <footer>
+            <div class="wrapper-content-footer">
+                <div class="footer-list">NAVIGATION
+                    <a href="PSK.html" class="navigation-text-link">HOME</a>
+                    <a href="Introduction.html" class="navigation-text-link">INTRODUCTION</a>
+                    <a href="process.html" class="navigation-text-link">PSK</a>
+                    <a href="Result.html" class="navigation-text-link">RESULT</a>
+                </div>
+            </div> 
+        </footer>
+    </body>
+</html>
