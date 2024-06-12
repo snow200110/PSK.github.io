@@ -9,6 +9,7 @@
     text-align: left;
 }
 .list-1{
+    text-align: left;
     font-size: 180%;
     background-color: #03506F;
     padding-left: 3%;
@@ -22,4 +23,11 @@
     font-size: 20px;
     font-weight: 700;
     color:#03506F;
+}
+.Intro-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 35%;
+    width: 30%;
 }
