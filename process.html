@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>INTRODUCTION</title>
+        <title>PROCESS</title>
         <link rel="stylesheet" href="PskStyle.css">
         <link rel="stylesheet" href="IntroStyle.css">
         <link rel="stylesheet" href="normalize.css">
+        <script src="https://unpkg.com/scrollreveal"></script>
     </head>
     <body>
         <header>
@@ -24,14 +25,19 @@
         </header>
         <p class="title-intro">How To We Reach Our Goal</p>
         <ul>
+            <br/>
             <span class="list-1">Step 1</span>
             <p class="content">
                 利用Matlab去進行 SIN 和 COS 之波型的模擬並採樣，其中的數值將全部轉換成0與1，之後將結果錄進去.txt 檔之中。
                 <br/>
-                可以參考以下圖片:
+                可以參考以下圖片與程式碼:
             </p>
+            <img class="Process-img" src="image/data-cos.png" alt="">
             <br/>
             <span class="list-1">Step 2</span>
+            <p class="content">
+                利用Verilog撰寫PSK的模塊，以下為程式碼的詳解:
+            </p>
         </ul>
 
         <footer>
@@ -45,4 +51,13 @@
             </div> 
         </footer>
     </body>
+    <script>
+        ScrollReveal({
+            reset:true,
+            distance: '60px',
+            duration: 2500,
+            delay: 300
+        });
+        ScrollReveal().reveal('.title-intro',{delay: 400, origin:'bottom'});
+       </script>
 </html>
