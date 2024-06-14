@@ -9,8 +9,8 @@
     text-align: left;
 }
 .list-1{
-    text-align: left;
-    font-size: 180%;
+    text-align: center;
+    font-size: 150%;
     background-color: #03506F;
     padding-left: 3%;
     padding-right: 3%;
@@ -18,9 +18,9 @@
 }
 .content{
     text-align: left;
-    margin-left: 50px;
-    margin-right: 50px;
-    font-size: 20px;
+    margin-left: 7%;
+    margin-right: 7%;
+    font-size: 130%;
     font-weight: 700;
     color:#03506F;
 }
@@ -30,4 +30,11 @@
     align-items: center;
     margin-left: 35%;
     width: 30%;
+}
+.Process-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 35%;
+    height: 10%;
 }
