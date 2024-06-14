@@ -6,6 +6,7 @@
         <title>Final_Project</title>
         <link rel="stylesheet" href="PskStyle.css">
         <link rel="stylesheet" href="/PSK/normalize.css">
+        <script src="https://unpkg.com/scrollreveal"></script>
     </head>
    <body>
     <header>
@@ -31,20 +32,23 @@
                 <a class="link-button" href="Result.html">View Project</a>
             </div>
         </section>
-        <p class="about-content">About Us</p>
-        <div class="wrapper-image-about">
-            <img class="Image-about" src="image/boy-1.png" alt="">
-            <img class="Image-about" src="image/boy-2.png" alt="">
-            <img class="Image-about" src="image/girl-1.png" alt="">
-            <img class="Image-about" src="image/girl-2.png" alt="">
-        </div>
-        <div class="teammember-about">
-            <p class="member-detail">李晉丞</p>
-            <p class="member-detail">林士軒</p>
-            <p class="member-detail">張星瑀</p>
-            <p class="member-detail">盧翊禎</p>
-        </div>
-
+        <section>
+            <p class="about-content">About Us</p>
+            <div class="wrapper-image-about">
+                <img class="Image-about" src="image/boy-1.png" alt="">
+                <img class="Image-about" src="image/boy-2.png" alt="">
+                <img class="Image-about" src="image/girl-1.png" alt="">
+                <img class="Image-about" src="image/girl-2.png" alt="">
+            </div>
+            <div class="teammember-about">
+                <p class="member-detail">李晉丞</p>
+                <p class="member-detail">林士軒</p>
+                <p class="member-detail">張星瑀</p>
+                <p class="member-detail">盧翊禎</p>
+            </div>
+    
+        </section>
+        
     </main>
 
     <footer>
@@ -57,8 +61,16 @@
             </div>
         </div> 
     </footer>
-    
-        
-      
+
    </body>
+   <script>
+    ScrollReveal({
+        reset:true,
+        distance: '60px',
+        duration: 2500,
+        delay: 300
+    });
+    ScrollReveal().reveal('.primary_main-img',{delay: 400, origin:'bottom'});
+    ScrollReveal().reveal('.wrapper-primary-text',{delay: 450, origin:'right'});
+   </script>
 </html>
