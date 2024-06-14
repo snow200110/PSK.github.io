@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="PskStyle.css">
         <link rel="stylesheet" href="IntroStyle.css">
         <link rel="stylesheet" href="normalize.css">
+        <script src="https://unpkg.com/scrollreveal"></script>
     </head>
     <body>
         <header>
@@ -103,4 +104,13 @@
             </div> 
         </footer>
     </body>
+    <script>
+        ScrollReveal({
+            reset:true,
+            distance: '60px',
+            duration: 2500,
+            delay: 300
+        });
+        ScrollReveal().reveal('.title-intro',{delay: 400, origin:'bottom'});
+       </script>
 </html>
