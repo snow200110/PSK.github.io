@@ -32,9 +32,35 @@
     width: 30%;
 }
 .Process-img{
-    display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 35%;
     height: 10%;
+    margin-left: 42.5%;
+}
+.list-mark{
+    list-style-type: circle;
+    text-align: left;
+    margin-left: 7%;
+    margin-right: 7%;
+    font-size: 150%;
+    font-weight: 700;
+    color:#03506F;
+}
+pre {
+    margin-right: 5%;
+    background-color: black;
+}
+code{
+    background-color: black;
+}
+.content-img{
+    text-align: center;
+}
+
+.result-img{
+    width: 80%;
+    margin-left: 10%;
+    justify-content: center;
+    align-items: center;
+}
 }
