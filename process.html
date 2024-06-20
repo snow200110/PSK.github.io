@@ -23,21 +23,148 @@
             <br/>
             <br/>
         </header>
+
         <p class="title-intro">How To We Reach Our Goal</p>
         <ul>
             <br/>
-            <span class="list-1">Step 1</span>
+            <span class="list-1">Step 1: 載波生成</span>
             <p class="content">
                 利用Matlab去進行 SIN 和 COS 之波型的模擬並採樣，其中的數值將全部轉換成0與1，之後將結果錄進去.txt 檔之中。
+                主要流程為：
+            </p>    
+            <ol>
+                <li class="content">設置參數，生成時間向量。</li>
+                <li class="content">生成指定頻率和週期數的正弦波。</li>
+                <li class="content">將正弦波量化為12位整數。</li>
+                <li class="content">將量化後的整數限制在12位有符號整數範圍內。</li>
+                <li class="content">將這些整數轉換為12位的二進制字串，輸出檔案。</li>
+
+            </ol>
+            <p class="content">可以參考以下圖片與程式碼:
                 <br/>
-                可以參考以下圖片與程式碼:
+                sin波：
             </p>
-            <img class="Process-img" src="image/data-cos.png" alt="">
+            <pre>
+                <code>
+                % Set parameters
+                f1 = 5000; % waveform frequency
+                fs = 32 * f1; % sampling frequency, ensuring 32 points per cycle
+                N = 12; % number of quantization bits
+                num_cycles = 2000; % number of cycles
+                samples_per_cycle = 32; % sampling points per cycle
+
+                % Generate time vector
+                t = 0:1/fs:(samples_per_cycle * num_cycles - 1)/fs;
+
+                % Generate sine wave
+                sin_wave = 2047 * sin(2 * pi * f1 * t);
+
+                % Quantize to 12 bits
+                quantized_wave = round(sin_wave);
+
+                % Convert positive and negative values to 12-bit signed values
+                % Set values greater than or equal to 2048 to the maximum value
+                quantized_wave(quantized_wave >= 2048) = 2047;
+                % Set values less than or equal to -2048 to the minimum value
+                quantized_wave(quantized_wave <= -2048) = -2048; 
+
+                % Convert to 12-bit binary strings
+                binary_wave = dec2bin(quantized_wave + 2048, N);
+
+                % Write to text file
+                fid = fopen('C:\homework\Communication experiment\project\testdata_sin', 'w');
+                for i = 1:length(binary_wave)
+                    fprintf(fid, '%s\n', binary_wave(i, :));
+                end
+                fclose(fid);
+                </code>
+            </pre>
+
+            <p class="content">cos波：</p>
+            <pre>
+                <code>
+                    % Set parameters
+                    f1 = 5000; % waveform frequency
+                    fs = 32 * f1; % sampling frequency, ensuring 32 points per cycle
+                    N = 12; % number of quantization bits
+                    num_cycles = 2000; % number of cycles
+                    samples_per_cycle = 32; % sampling points per cycle
+
+                    % Generate time vector
+                    t = 0:1/fs:(samples_per_cycle * num_cycles - 1)/fs;
+
+                    % Generate cos wave
+                    cos_wave = 2047 * cos(2 * pi * f1 * t);
+
+                    % Quantize to 12 bits
+                    quantized_wave = round(cos_wave);
+
+                    % Convert positive and negative values to 12-bit signed values
+                    % Set values greater than or equal to 2048 to the maximum value
+                    quantized_wave(quantized_wave >= 2048) = 2047; 
+                    % Set values less than or equal to -2048 to the minimum value
+                    quantized_wave(quantized_wave <= -2048) = -2048; 
+
+                    % Convert to 12-bit binary strings
+                    binary_wave = dec2bin(quantized_wave + 2048, N);
+
+                    % Write to text file
+                    fid = fopen('C:\homework\Communication experiment\project\testdata_cos', 'w');
+                    for i = 1:length(binary_wave)
+                        fprintf(fid, '%s\n', binary_wave(i, :));
+                    end
+                    fclose(fid);
+                </code>
+            </pre>
+            <img class="Process-img content-img" src="image/data-cos.png" alt="">
             <br/>
-            <span class="list-1">Step 2</span>
+            <p class="content content-img">波形之二進字</p>
+            <br/>
+            <span class="list-1">Step 2: Verilog撰寫PSK</span>
             <p class="content">
-                利用Verilog撰寫PSK的模塊，以下為程式碼的詳解:
+                利用Verilog撰寫PSK的模塊，可以分成兩部分，分別為調變與解調:
             </p>
+            <ul>
+                <li class="list-mark">調變</li>
+                <p class="content">
+                    程式碼如下:
+                </p>
+                <pre>
+                    <code>
+                        // PSK Modulation
+                        always @(posedge clk_1M or negedge rst) begin
+                        if (!rst) begin
+                            Mod_out0 <= 0;
+                            Mod_out1 <= 0;
+                        end else begin
+                            if (M_out == 1'b0)
+                            Mod_out0 <= cos0;
+                            else
+                            Mod_out1 <= sin1;
+                        end
+                        end
+                    </code>
+                </pre>
+
+                <li class="list-mark content">解調</li>
+                <p class="content">
+                    程式碼如下:
+                </p>
+                <pre><code>
+                    // PSK Demodulation
+                    always @(posedge clk_1M or negedge rst) begin
+                      if (!rst)
+                        demod_out <= 0;
+                      else if (received_signal == cos0)
+                        demod_out <= 1'b0;
+                      else if (received_signal == sin1)
+                        demod_out <= 1'b1;
+                    end
+                </code></pre>
+               
+            </ul>
+            <span class="list-1">Step 3: 生成相位累加器DDS</span>
+            <p class="content">用於生成相位增量。每個時鐘週期增加固定的相位增量，輸出作為查找表的地址。</p>
         </ul>
 
         <footer>
