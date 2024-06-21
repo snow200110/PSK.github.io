@@ -163,9 +163,10 @@
                 </code></pre>
                
             </ul>
+            <br/>
             <span class="list-1">Step 3: 生成相位累加器DDS</span>
             <p class="content">用於生成相位增量。每個時鐘週期增加固定的相位增量，輸出作為查找表的地址。</p>
-            
+            <br/>
             <span class="list-1">Step 4: Verilog測試Binary訊號</span>
             <p class="content">
                 利用M-ary產生器，所產生的信號，可以分成兩個部分。<br/><br/>
@@ -203,7 +204,19 @@
                     );
                 </code>
             </pre>
-            
+            <br/>
+            <span class="list-1">Step 5: 數位訊號轉換成類比訊號</span>
+            <p class="content">
+                在數位電路設計軟體Vivado 中，輸出模擬圖通常是數位方波圖。
+                在數位通信中，一些調變方式（如PSK）依賴類比弦波信號作為載波。
+                因此，能夠在模擬軟體中顯示類比信號是非常重要的。<br/>
+                下方為尚未進行DAC轉換之圖片:
+            </p>
+            <img class="DAC-img" src="https://raw.githubusercontent.com/jinchunglee/FPGA_PSK/main/image-3.png">
+            <p class="content">
+                在Vivado中，利用wave style來達成類比訊號的轉換，只需該訊號點擊右鍵，如下圖：
+            </p>
+            <img class="DAC-img" src="https://raw.githubusercontent.com/jinchunglee/FPGA_PSK/main/image-4.png">
         </ul>
 
         <footer>
