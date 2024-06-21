@@ -165,6 +165,22 @@
             </ul>
             <span class="list-1">Step 3: 生成相位累加器DDS</span>
             <p class="content">用於生成相位增量。每個時鐘週期增加固定的相位增量，輸出作為查找表的地址。</p>
+            <span class="list-1">Step 4: Verilog測試Binary訊號</span>
+            <p class="content">
+                利用M-ary產生器，所產生的信號，用以確認調變與解調是正確的。程式碼如下:
+            </p>
+            <pre>
+                <code>
+                    clk_div #(
+                        .Max (500)  // 設定參數 Max 的值為 500
+                    ) u3 (
+                        .clk(clk),  // 輸入時鐘信號
+                        .rst(rst),  // 輸入重置信號
+                        .clk_div(clk_M)  // 輸出分頻後的時鐘信號
+                    );
+                </code>
+            </pre>
+
         </ul>
 
         <footer>
