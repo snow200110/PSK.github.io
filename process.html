@@ -165,9 +165,14 @@
             </ul>
             <span class="list-1">Step 3: 生成相位累加器DDS</span>
             <p class="content">用於生成相位增量。每個時鐘週期增加固定的相位增量，輸出作為查找表的地址。</p>
+            
             <span class="list-1">Step 4: Verilog測試Binary訊號</span>
             <p class="content">
-                利用M-ary產生器，所產生的信號，用以確認調變與解調是正確的。程式碼如下:
+                利用M-ary產生器，所產生的信號，可以分成兩個部分。<br/><br/>
+                第一部分為clk_div，其通過計數來實現時鐘分頻，當計數達到設定的最大值 Max 時，
+                輸出時鐘信號 clk_div 翻轉一次。
+                這樣，輸出時鐘的頻率會是輸入時鐘的頻率除以 (Max+1)。<br/>
+                程式碼如下:
             </p>
             <pre>
                 <code>
@@ -180,7 +185,25 @@
                     );
                 </code>
             </pre>
-
+            <p class="content">
+                第二部分為M_gen 模塊，其是一個多相序列生成器，通常用於生成偽隨機序列。
+                這些序列在數字通信、加密和測試中廣泛應用。<br/>
+                M 序列（Maximum Length Sequence）是由線性反饋移位寄存器 (LFSR) 生成的，
+                具有最大周期性且擁有良好的統計特性。<br/>
+                程式碼如下:
+            </p>
+            <pre>
+                <code>
+                    M_gen #(
+                    .width (8)  // 設定參數 width 的值為 8
+                    ) u4 (
+                    .clk(clk_M),  // 輸入分頻後的時鐘信號
+                    .rst(rst),    // 輸入重置信號
+                    .M_out(M_out)  // 輸出 M 序列信號
+                    );
+                </code>
+            </pre>
+            
         </ul>
 
         <footer>
