@@ -32,8 +32,9 @@ body{
 
 .topic{
     background-color: #03506F;
-    font-size: 220%;
-    margin-left: 1.5%;
+    font-size: 250%;
+    margin-left: 4%;
+    letter-spacing: 5px;
 }
 
 .header-nav{
